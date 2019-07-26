@@ -7,7 +7,10 @@ The purpose of making this ERC20 token/coin is to create a cryptocurrency that i
 
 
 ### About the format
-If code were the law, than a proper white-paper would represent a code-documentation. The code can be found deployed under Ethereum’s contract: [0x3324f4af7eE967bFA35A5AcCba7Df13e7C932397](https://etherscan.io/address/0x3324f4af7eE967bFA35A5AcCba7Df13e7C932397). The contract is a bugfix of [0xbF633d148a67B551bD643783d2dC3cEAEae31a62](https://etherscan.io/address/0xbf633d148a67b551bd643783d2dc3ceaeae31a62).
+If code were the law, than a proper white-paper would represent a code-documentation. The code can be found deployed under Ethereum’s contract: 
+[0x54CCf0c46D45b85A37f960cBe1ECAfAe5844252b](https://etherscan.io/address/0x54CCf0c46D45b85A37f960cBe1ECAfAe5844252b)
+
+
 
 This white-paper will skip all the non-technical details, necessary repetitions and the common knowledge regarding the ERC20 tokens running on Ethereum. Furthermore, the main purpose of this white-paper is to translate the source-code to a plain and understandable English. The main parts of the source-code are ApproveAndFallCallback, Erc20Interface, ExtendedMath, Owned, SafeMath, and ZERO_X_BUTTv3. Everything else other than ZERO_X_BUTTv3 are the standards for coding an Ethereum token, and therefore, those will not be covered with the white-paper.
 
@@ -102,3 +105,9 @@ Both of these functions are meant to transfer the ButtCoins from one account to 
 #### Other methods are either the getters or the standard methods that do not need an elaboration.
 
 With this white-paper, we have covered a distribution model, differences between a ButtCoin and a Bitcoin as well as the ButtCoin’s model and logic. This information can be beautified with nice graphs and tables, however, it was not a necessary step while writing the white-paper. Therefore, this white-paper was meant for technically-inclined audiences and those who may have some developer skills.
+
+## Previous version of a contract, BUGFIXES
+[0x3324f4af7eE967bFA35A5AcCba7Df13e7C932397](https://etherscan.io/address/0x3324f4af7eE967bFA35A5AcCba7Df13e7C932397)
+[0xbF633d148a67B551bD643783d2dC3cEAEae31a62](https://etherscan.io/address/0xbf633d148a67b551bd643783d2dc3ceaeae31a62)
+
+Please ignore any 0xBUTT tokens coming from any of those contracts !!!
