@@ -374,15 +374,7 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
       
   }
 
-  // ------------------------------------------------------------------------
-  // Transfer the balance from token owner's account to `to` account
-  // - Owner's account must have sufficient balance to transfer
-  // - 0 value transfers are allowed
-  // ------------------------------------------------------------------------
  
-
- 
-
 
 
   // ------------------------------------------------------------------------
