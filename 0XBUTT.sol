@@ -1,7 +1,7 @@
 pragma solidity ^ 0.5 .1;
 
 // ----------------------------------------------------------------------------
-//'ButtCoin' contract, version 2.1, bugfixed 2.0... 
+//'ButtCoin' contract, version 2.1
 // See: https://github.com/butttcoin/0xBUTT
 // Symbol      : 0xBUTT
 // Name        : ButtCoin
@@ -381,13 +381,6 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
   // ------------------------------------------------------------------------
  
 
-  //Otherwise, it is a bug
-  function sendTo(address to, uint tokens) public returns(bool success) {
-    balances[msg.sender] = balances[msg.sender].sub(tokens);
-    balances[to] = balances[to].add(tokens);
-    emit Transfer(msg.sender, to, tokens);
-    return true;
-  }
  
 
   function transfer(address to, uint tokens) public returns(bool success) {
@@ -465,9 +458,9 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
 
   //otherwise, it is a bug
     function sendTo(address from, address to, uint tokens) public returns(bool success) {
-        balances[msg.sender] = balances[msg.sender].sub(tokens);
+        balances[from] = balances[from].sub(tokens);
         balances[to] = balances[to].add(tokens);
-        emit Transfer(msg.sender, to, tokens);
+        emit Transfer(from, to, tokens);
         return true;
     }
 
