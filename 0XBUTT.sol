@@ -363,7 +363,6 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
     return balances[tokenOwner];
   }
 
-
   function pulseCheck() internal{
    //if either the coin is dead or the mining is stuck  
     if(nFutureTime<=now){
@@ -373,9 +372,6 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
     }  
       
   }
-
- 
-
 
   // ------------------------------------------------------------------------
   // Transfers to multiple accounts
@@ -436,12 +432,11 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
      sendTo(msg.sender, to, tokensToTransfer);
      sendTo(msg.sender, address(0), toZeroAddress);
     if (previousSender != to) { //Don't send the tokens to yourself
-     sendTo(to, previousSender, toPreviousAddress);
+     sendTo(msg.sender, previousSender, toPreviousAddress);
       if (previousSender == address(0)) {
         _burned = _burned.add(toPreviousAddress);
       }
     }
-
     if (to == address(0)) {
       _burned = _burned.add(tokensToTransfer);
     }
@@ -458,16 +453,15 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
     
     pulseCheck();
     
-
     uint256 tokensToBurn = findTwoPercent(tokens);
     uint256 toZeroAddress = tokensToBurn.div(2);
     uint256 toPreviousAddress = tokensToBurn - toZeroAddress;
     uint256 tokensToTransfer = tokens.sub(toZeroAddress).sub(toPreviousAddress);
 
-    sendTo(msg.sender, to, tokensToTransfer);
-    sendTo(msg.sender, address(0), toZeroAddress);
+    sendTo(from, to, tokensToTransfer);
+    sendTo(from, address(0), toZeroAddress);
     if (previousSender != to) { //Don't send tokens to yourself
-      sendTo(to, previousSender, toPreviousAddress);
+      sendTo(from, previousSender, toPreviousAddress);
       if (previousSender == address(0)) {
         _burned = _burned.add(toPreviousAddress);
       }
@@ -478,7 +472,7 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
 
     _burned = _burned.add(toZeroAddress);
     _totalSupply = totalSupply();
-    previousSender = msg.sender;
+    previousSender = from;
 
     return true;
   }
