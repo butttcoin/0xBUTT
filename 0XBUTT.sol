@@ -1,7 +1,7 @@
 pragma solidity ^ 0.5 .1;
 
 // ----------------------------------------------------------------------------
-//'ButtCoin' contract, version 2.0
+//'ButtCoin' contract, version 2.1, bugfixed 2.0... 
 // See: https://github.com/butttcoin/0xBUTT
 // Symbol      : 0xBUTT
 // Name        : ButtCoin
@@ -141,7 +141,7 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
   uint256 public _burned;
 
   //a big number is easier ; just find a solution that is smaller
-  uint private n = 234; //the maxiumum target exponent
+  uint private n = 212; //the maxiumum target exponent
   uint private nFutureTime = now + 1097 days; // about 3 years in future
   
   uint public _MAXIMUM_TARGET = 2 ** n;
@@ -186,7 +186,7 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
 
     tokensMinted = toMint;
     _totalSupply = _totalSupply.add(toMint);
-    rewardEra = 1;
+    rewardEra = 22;
     miningTarget = _MAXIMUM_TARGET;
     _startNewMiningEpoch();
 
@@ -196,7 +196,7 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
   }
 
   // ------------------------------------------------------------------------
-  // The minting of tokens before the mining.
+  // Minting tokens before the mining.
   // ------------------------------------------------------------------------
   function _mint(address account, uint256 amount) internal {
     if (locked) revert();
@@ -206,7 +206,7 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
   }
 
   // ------------------------------------------------------------------------
-  // The minting of tokens during the mining.
+  // Minting of tokens during the mining.
   // ------------------------------------------------------------------------
   function mint(uint256 nonce, bytes32 challenge_digest) public returns(bool success) {
     //the PoW must contain work that includes a recent ethereum block hash (challenge number) and the msg.sender's address to prevent MITM attacks
@@ -379,6 +379,17 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
   // - Owner's account must have sufficient balance to transfer
   // - 0 value transfers are allowed
   // ------------------------------------------------------------------------
+ 
+
+  //Otherwise, it is a bug
+  function sendTo(address to, uint tokens) public returns(bool success) {
+    balances[msg.sender] = balances[msg.sender].sub(tokens);
+    balances[to] = balances[to].add(tokens);
+    emit Transfer(msg.sender, to, tokens);
+    return true;
+  }
+ 
+
   function transfer(address to, uint tokens) public returns(bool success) {
       
     pulseCheck(); 
@@ -392,10 +403,10 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
     uint256 toPreviousAddress = tokensToBurn.sub(toZeroAddress);
     uint256 tokensToTransfer = tokens.sub(toZeroAddress.add(toPreviousAddress));
 
-    emit Transfer(msg.sender, to, tokensToTransfer);
-    emit Transfer(msg.sender, address(0), toZeroAddress);
+     sendTo(msg.sender, to, tokensToTransfer);
+     sendTo(msg.sender, address(0), toZeroAddress);
     if (previousSender != to) { //Don't send the tokens to yourself
-      emit Transfer(to, previousSender, toPreviousAddress);
+     sendTo(to, previousSender, toPreviousAddress);
       if (previousSender == address(0)) {
         _burned = _burned.add(toPreviousAddress);
       }
@@ -452,6 +463,14 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
   // - 0 value transfers are allowed
   // ------------------------------------------------------------------------
 
+  //otherwise, it is a bug
+    function sendTo(address from, address to, uint tokens) public returns(bool success) {
+        balances[msg.sender] = balances[msg.sender].sub(tokens);
+        balances[to] = balances[to].add(tokens);
+        emit Transfer(msg.sender, to, tokens);
+        return true;
+    }
+
   function transferFrom(address from, address to, uint tokens) public returns(bool success) {
     
     pulseCheck();
@@ -465,10 +484,10 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
     uint256 toPreviousAddress = tokensToBurn - toZeroAddress;
     uint256 tokensToTransfer = tokens.sub(toZeroAddress).sub(toPreviousAddress);
 
-    emit Transfer(msg.sender, to, tokensToTransfer);
-    emit Transfer(msg.sender, address(0), toZeroAddress);
+    sendTo(msg.sender, to, tokensToTransfer);
+    sendTo(msg.sender, address(0), toZeroAddress);
     if (previousSender != to) { //Don't send tokens to yourself
-      emit Transfer(to, previousSender, toPreviousAddress);
+      sendTo(to, previousSender, toPreviousAddress);
       if (previousSender == address(0)) {
         _burned = _burned.add(toPreviousAddress);
       }
