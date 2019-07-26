@@ -106,6 +106,16 @@ Both of these functions are meant to transfer the ButtCoins from one account to 
 
 With this white-paper, we have covered a distribution model, differences between a ButtCoin and a Bitcoin as well as the ButtCoin’s model and logic. This information can be beautified with nice graphs and tables, however, it was not a necessary step while writing the white-paper. Therefore, this white-paper was meant for technically-inclined audiences and those who may have some developer skills.
 
+## Addresses
+DEV ADDRESS: 
+0xca88280E6eEECB75Bf371D2a97AD813c13b99478
+
+EXCHANGES ADDRESS: 
+0x06773FDBB50D7bF3d58834D257111419B7455df7
+
+COMMUNITY ADDRESS: 
+0x60AF68D5FE8a50310ADC90d5510597229cB1167b
+
 ## Previous version of a contract, BUGFIXES
 [0x3324f4af7eE967bFA35A5AcCba7Df13e7C932397](https://etherscan.io/address/0x3324f4af7eE967bFA35A5AcCba7Df13e7C932397)
 
