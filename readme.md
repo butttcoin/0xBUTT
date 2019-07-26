@@ -66,11 +66,11 @@ Most were already covered under “Main Constructor”. However the “_burned�
 
 ```nFutureTime``` : This is used for a pulse check. If there is no difficulty increase in 1097 days (about 3 years), then the mining is either stuck with a difficulty or the coin is not mined for some other reason. This is used to decrease a difficulty should anything like that happen. The idea is vaguely similar to BTC’s difficulty decrease.
 
-### _mint Function
+### premine Function
 ``` js 
-function _mint(address account, uint256 amount) internal {...
+function premine(address account, uint256 amount) internal {...
 ```
-This will get executed only once, and never again. This function has been created as a kick-start.
+This will get executed only once, and never again. This function has been created as a kick-start to generate initial tokens.
 
 ### mint Function
 ``` js 
