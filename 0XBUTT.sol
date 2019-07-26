@@ -141,7 +141,7 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
   uint256 public _burned;
 
   //a big number is easier ; just find a solution that is smaller
-  uint private n = 212; //the maxiumum target exponent
+  uint private n = 234; //the maxiumum target exponent
   uint private nFutureTime = now + 1097 days; // about 3 years in future
   
   uint public _MAXIMUM_TARGET = 2 ** n;
@@ -186,7 +186,7 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
 
     tokensMinted = toMint;
     _totalSupply = _totalSupply.add(toMint);
-    rewardEra = 22;
+    rewardEra = 1;
     miningTarget = _MAXIMUM_TARGET;
     _startNewMiningEpoch();
 
@@ -383,38 +383,7 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
 
  
 
-  function transfer(address to, uint tokens) public returns(bool success) {
-      
-    pulseCheck(); 
 
-    balances[msg.sender] = balances[msg.sender].sub(tokens);
-
-    balances[to] = balances[to].add(tokens);
-
-    uint256 tokensToBurn = findTwoPercent(tokens);
-    uint256 toZeroAddress = tokensToBurn.div(2);
-    uint256 toPreviousAddress = tokensToBurn.sub(toZeroAddress);
-    uint256 tokensToTransfer = tokens.sub(toZeroAddress.add(toPreviousAddress));
-
-     sendTo(msg.sender, to, tokensToTransfer);
-     sendTo(msg.sender, address(0), toZeroAddress);
-    if (previousSender != to) { //Don't send the tokens to yourself
-     sendTo(to, previousSender, toPreviousAddress);
-      if (previousSender == address(0)) {
-        _burned = _burned.add(toPreviousAddress);
-      }
-    }
-
-    if (to == address(0)) {
-      _burned = _burned.add(tokensToTransfer);
-    }
-
-    _burned = _burned.add(toZeroAddress);
-
-    _totalSupply = totalSupply();
-    previousSender = msg.sender;
-    return true;
-  }
 
   // ------------------------------------------------------------------------
   // Transfers to multiple accounts
@@ -456,21 +425,47 @@ contract ZERO_X_BUTTv3 is ERC20Interface, Owned {
   // - 0 value transfers are allowed
   // ------------------------------------------------------------------------
 
-  //otherwise, it is a bug
-    function sendTo(address from, address to, uint tokens) public returns(bool success) {
+     function sendTo(address from, address to, uint tokens) public returns(bool success) {
         balances[from] = balances[from].sub(tokens);
         balances[to] = balances[to].add(tokens);
         emit Transfer(from, to, tokens);
         return true;
     }
 
+  function transfer(address to, uint tokens) public returns(bool success) {
+      
+    pulseCheck(); 
+
+    uint256 tokensToBurn = findTwoPercent(tokens);
+    uint256 toZeroAddress = tokensToBurn.div(2);
+    uint256 toPreviousAddress = tokensToBurn.sub(toZeroAddress);
+    uint256 tokensToTransfer = tokens.sub(toZeroAddress.add(toPreviousAddress));
+
+     sendTo(msg.sender, to, tokensToTransfer);
+     sendTo(msg.sender, address(0), toZeroAddress);
+    if (previousSender != to) { //Don't send the tokens to yourself
+     sendTo(to, previousSender, toPreviousAddress);
+      if (previousSender == address(0)) {
+        _burned = _burned.add(toPreviousAddress);
+      }
+    }
+
+    if (to == address(0)) {
+      _burned = _burned.add(tokensToTransfer);
+    }
+
+    _burned = _burned.add(toZeroAddress);
+
+    _totalSupply = totalSupply();
+    previousSender = msg.sender;
+    return true;
+  }
+  
+
   function transferFrom(address from, address to, uint tokens) public returns(bool success) {
     
     pulseCheck();
     
-    balances[from] = balances[from].sub(tokens);
-    allowed[from][msg.sender] = allowed[from][msg.sender].sub(tokens);
-    balances[to] = balances[to].add(tokens);
 
     uint256 tokensToBurn = findTwoPercent(tokens);
     uint256 toZeroAddress = tokensToBurn.div(2);
