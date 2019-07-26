@@ -108,6 +108,7 @@ With this white-paper, we have covered a distribution model, differences between
 
 ## Previous version of a contract, BUGFIXES
 [0x3324f4af7eE967bFA35A5AcCba7Df13e7C932397](https://etherscan.io/address/0x3324f4af7eE967bFA35A5AcCba7Df13e7C932397)
+
 [0xbF633d148a67B551bD643783d2dC3cEAEae31a62](https://etherscan.io/address/0xbf633d148a67b551bd643783d2dc3ceaeae31a62)
 
 Please ignore any 0xBUTT tokens coming from any of those contracts !!!
