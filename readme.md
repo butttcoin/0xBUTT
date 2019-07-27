@@ -8,7 +8,7 @@ The purpose of making this ERC20 token/coin is to create a cryptocurrency that i
 
 ### About the format
 If code were the law, than a proper white-paper would represent a code-documentation. The code can be found deployed under Ethereum’s contract: 
-[0x54CCf0c46D45b85A37f960cBe1ECAfAe5844252b](https://etherscan.io/address/0x54CCf0c46D45b85A37f960cBe1ECAfAe5844252b)
+
 
 
 
@@ -116,9 +116,18 @@ EXCHANGES ADDRESS:
 COMMUNITY ADDRESS: 
 0x60AF68D5FE8a50310ADC90d5510597229cB1167b
 
-## Previous version of a contract, BUGFIXES
-[0x3324f4af7eE967bFA35A5AcCba7Df13e7C932397](https://etherscan.io/address/0x3324f4af7eE967bFA35A5AcCba7Df13e7C932397)
+## Previous version of a contract, BUGFIXES on main-net
 
-[0xbF633d148a67B551bD643783d2dC3cEAEae31a62](https://etherscan.io/address/0xbf633d148a67b551bd643783d2dc3ceaeae31a62)
+Due to a nature of Ethereum, it is impossible to make any changes without issuing another contract. Although usual within the IT industry, it means that the contract must be perfect and that there are not corrections. Hopefully, this will be solved in the future. For now, this is what it is...
+
+[0x3324f4af7eE967bFA35A5AcCba7Df13e7C932397](https://etherscan.io/address/0x3324f4af7eE967bFA35A5AcCba7Df13e7C932397) Fixing the proper track of tokens and balances.
+
+[0xbF633d148a67B551bD643783d2dC3cEAEae31a62](https://etherscan.io/address/0xbf633d148a67b551bd643783d2dc3ceaeae31a62) Fixing the proper track of tokens and balances.
+
+[0x54CCf0c46D45b85A37f960cBe1ECAfAe5844252b](https://etherscan.io/address/0x54CCf0c46D45b85A37f960cBe1ECAfAe5844252b) It was possible to send transactions without a 2% reduction (to make a small hack/exploit) public was decrlared instead of an internal.
 
 Please ignore any 0xBUTT tokens coming from any of those contracts !!!
+
+## Worst-case scenario
+
+Although the known bugs were fixed, it is possible, since this coin is experimental, that some issues will become evident or that people will not agree with a design.  If that happens, the only thing that can be done is to issue another token and (dis) continue the old one. 
