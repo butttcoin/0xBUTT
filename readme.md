@@ -12,14 +12,14 @@ If code were the law, than a proper white-paper would represent a code-documenta
 
 
 
-This white-paper will skip all the non-technical details, necessary repetitions and the common knowledge regarding the ERC20 tokens running on Ethereum. Furthermore, the main purpose of this white-paper is to translate the source-code to a plain and understandable English. The main parts of the source-code are ApproveAndFallCallback, Erc20Interface, ExtendedMath, Owned, SafeMath, and ZERO_X_BUTTv3. Everything else other than ZERO_X_BUTTv3 are the standards for coding an Ethereum token, and therefore, those will not be covered with the white-paper.
+This white-paper will skip all the non-technical details, necessary repetitions and the common knowledge regarding the ERC20 tokens running on Ethereum. Furthermore, the main purpose of this white-paper is to translate the source-code to a plain and understandable English. The main parts of the source-code are ApproveAndFallCallback, Erc20Interface, ExtendedMath, Owned, SafeMath, and ZERO_X_BUTTv5. Everything else other than ZERO_X_BUTTv5 are the standards for coding an Ethereum token, and therefore, those will not be covered with the white-paper.
 
 Most of the source-code originates from 0xBitCoin’s contract.
 The 0xBitcoin contract is located at Ethereum address [0xb6ed7644c69416d67b522e20bc294a9a9b405b31](https://etherscan.io/address/0xb6ed7644c69416d67b522e20bc294a9a9b405b31) and has validated transparent code which can be audited on the Etherscan service.
 
 
 ### Functions, a general overview
-ZERO_X_BUTTv3 consists of the public, private and internal functions:
+ZERO_X_BUTTv5 consists of the public, private and internal functions:
 
 Internal functions are: _mint, _startNewMiningEpoch,  checkMintedNumber, _reAdjustDifficulty, pulseCheck.
 
@@ -60,11 +60,23 @@ basePercent : This helps us calculate the percentage for burning or sending to a
 ### Other Global Variables
 Most were already covered under “Main Constructor”. However the “_burned”, “previousSender”, and “nFutureTime” have not been mentioned.
 
-```_burned``` : Same as “tokensMinted”, however, we are counting how many tokens got burned. While tracking the minted as well as burned, we can get the _totalSupply. 
+ ```_burned``` : Same as “tokensMinted”, however, we are counting how many tokens got burned. While tracking the minted as well as burned, we can get the _totalSupply. 
 
 ```previousSender``` : We are keeping a track of the last sender on a chain. Since 2% of a transfer fee is allocated to burning, half of that goes to a previous sender. A sender is a person/entity that sends a certain amount of coins to someone. This always costs them money (Ethereum gas) and 2% of the ButCoins. However, by any luck, they can cover the transfer fees and even earn some ButtCoins since the next sender on a chain will give them 1% of their transfer. This also means that no matter how many times we send the ButtCoins, we are never going to get bankrupt. The initial previous sender is address(0) allocated to burning, and this can be overridden by the contract holder.
 
 ```nFutureTime``` : This is used for a pulse check. If there is no difficulty increase in 1097 days (about 3 years), then the mining is either stuck with a difficulty or the coin is not mined for some other reason. This is used to decrease a difficulty should anything like that happen. The idea is vaguely similar to BTC’s difficulty decrease.
+
+```n``` : Since the formula for the difficulty is 2^n and since we decrease the n by 1 every time new difficulty is set, it is useful to know what the current value for the n is.
+
+```_MAXIMUM_TARGET``` : The current mining target (difficulty).  Higher the number, lower the difficulty.
+ 
+```lastRewardAmount``` : The last amount awarded.
+
+```lastRewardEthBlockNumber``` : By original 0xBitcoin's design, this was relevant. To keep the code integrity, this has been kept in a code.
+ 
+```lastRewardTo``` : The address which got the last mining reward.
+ 
+```challengeNumber``` : The current challenge number.
 
 ### premine Function
 ``` js 
