@@ -19,21 +19,14 @@ The 0xBitcoin contract is located at Ethereum address [0xb6ed7644c69416d67b522e2
 
 
 ### Functions, a general overview
-ZERO_X_BUTTv5 consists of the public, private and internal functions:
 
-Internal functions are: _mint, _startNewMiningEpoch,  checkMintedNumber, _reAdjustDifficulty, pulseCheck.
-
-Private function: findTwoPercent.
-
-Public functions are: constructor, mint, getChallengeNumber,  getMiningDifficulty,  getMiningTarget,  getMiningReward, getMintDigest,  checkMintSolution, totalSupply, burned, minted, mintingEpoch, balanceOf, transfer, multiTransfer, approve,  transferFrom, allowance, approveAndCall, transferAnyERC20Token.
-
-The functions that exactly match the 0xBitCoin’s original code (regardless the Solidity version) are the one-line getter functions while the main algorithm has been entirely crafted into a new coin. Therefore, only the important changes will be discussed.
+The functions that exactly match the 0xBitCoin’s original code (regardless the Solidity version) are the one-line getter functions while the main algorithm has been entirely crafted into a new coin. Therefore, only the important changes will be discussed. Self-explanatory getters will most likely not be mentioned.
 
 ### Main Constructor
 ``` js
 constructor() public {...
 ```
-Constructor function is a function that is called by default. It is used to set the variables and call any additional setter functions before the program begins executing. This is where we set the coin symbol, name, decimals, base percent, rewardEra, miningTarget, tokensMinted, mintingEpoch, _totalSupply, and locked.  Here is what each variable means:
+Constructor function is a function that is called by default. It is used to set the variables and call any additional setter functions before the program begins executing. 
 
 ```symbol``` : This is coin’s market symbol, such as BTC for Bitcoin. In our case, 0xBUTT.
 
@@ -58,7 +51,7 @@ basePercent : This helps us calculate the percentage for burning or sending to a
 ```locked``` : This is used to confirm whether we have initiated a constructor, if yes, we cannot initiate it ever again.
 
 ### Other Global Variables
-Most were already covered under “Main Constructor”. However the “_burned”, “previousSender”, and “nFutureTime” have not been mentioned.
+Most were already covered under “Main Constructor”. 
 
  ```_burned``` : Same as “tokensMinted”, however, we are counting how many tokens got burned. While tracking the minted as well as burned, we can get the _totalSupply. 
 
