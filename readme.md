@@ -124,9 +124,9 @@ Due to a nature of Ethereum, it is impossible to make any changes without issuin
 
 [0xbF633d148a67B551bD643783d2dC3cEAEae31a62](https://etherscan.io/address/0xbf633d148a67b551bd643783d2dc3ceaeae31a62) Fixing the proper track of tokens and balances.
 
-[0x54CCf0c46D45b85A37f960cBe1ECAfAe5844252b](https://etherscan.io/address/0x54CCf0c46D45b85A37f960cBe1ECAfAe5844252b) It was possible to send transactions without a 2% reduction (to make a small hack/exploit) public was decrlared instead of an internal.
+[0x54CCf0c46D45b85A37f960cBe1ECAfAe5844252b](https://etherscan.io/address/0x54CCf0c46D45b85A37f960cBe1ECAfAe5844252b) It was possible to send transactions without a 2% reduction (to make a small hack/exploit) public was decrlared instead of an internal. Unecessary getters were removed.
 
-Please ignore any 0xBUTT tokens coming from any of those contracts !!!
+Please ignore any 0xBUTT tokens coming from any of these bugfixed contracts !!!
 
 ## Worst-case scenario
 
