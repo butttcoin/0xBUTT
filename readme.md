@@ -130,4 +130,4 @@ Please ignore any 0xBUTT tokens coming from any of these bugfixed contracts !!!
 
 ## Worst-case scenario
 
-Although the known bugs were fixed, it is possible, since this coin is experimental, that some issues will become evident or that people will not agree with a design.  If that happens, the only thing that can be done is to issue another token and (dis) continue the old one. 
+Although known bugs were fixed, it is possible (since this coin is experimental) that some issues will become evident or that people will not agree with a design.  If that happens, the only thing that can be done is to issue another token and (dis) continue the old one. This can be done in the future should the coin gain any popularity.
