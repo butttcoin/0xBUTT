@@ -1,0 +1,68 @@
+## The purpose of this test-file is to test the mining 
+
+1. Mining should work
+2. Mining should increment the rewards
+3. Mining should increment a difficulty (is quite noticable)
+4. Mining should affect the public/global variables such as nFutureTime with an increase
+
+A new contract has been deployed and verified:
+0x59a14C13011f3346B7Dc1103CF61a4f46AfD8E0F
+
+-Mining works
+Initial variables
+name:ButtCoin string
+lastRewardEthBlockNumber:0 uint256
+getMiningDifficulty:2 uint256
+totalSupply:3355446700000000 uint256
+rewardEra:2 uint256
+decimals:8 uint8
+getMiningTarget:13803492693581127574869511724554050904902217944340773110325048447598592 uint256
+_totalSupply:3355446700000000 uint256
+_burned:0 uint256
+getChallengeNumber:0xd0193526abfcb94c59f3149f8eebf484a5faba303f387b8e3b439b2ce0282db8 bytes32
+tokensMinted:3355446700000000 uint256
+lastRewardTo:0x0000000000000000000000000000000000000000 address
+balanceOf:
+nFutureTime:1656559168 uint256
+checkMintSolution:
+_MAXIMUM_TARGET:27606985387162255149739023449108101809804435888681546220650096895197184 uint256
+challengeNumber:0xd0193526abfcb94c59f3149f8eebf484a5faba303f387b8e3b439b2ce0282db8 bytes32
+owner:0xda54fcb4728641112985a7444fe2c6f9a7f4ffca address
+symbol:0xBUTT string
+getMintDigest:
+lastRewardAmount:0 uint256
+mintingEpoch:0 uint256
+getDifficultyExponent:233 uint256
+newOwner:0x0000000000000000000000000000000000000000 address
+previousSender:0x0000000000000000000000000000000000000000 address
+allowance:
+getNextAward:1 uint256
+
+Changed variables 
+name:ButtCoin string
+lastRewardEthBlockNumber:6076451 uint256
+getMiningDifficulty:16384 uint256
+totalSupply:3356274800000000 uint256
+rewardEra:15 uint256
+decimals:8 uint8
+getMiningTarget:1684996666696914987166688442938726917102321526408785780068975640576 uint256
+_totalSupply:46978920100000000 uint256
+_burned:0 uint256
+getChallengeNumber:0xecd7c822a46d1a837cde8d0d5b577dcbf0d6322c8b2078d17b8ab882cbd3c9a1 bytes32
+tokensMinted:3356274800000000 uint256
+lastRewardTo:0xda54fcb4728641112985a7444fe2c6f9a7f4ffca address
+balanceOf:
+nFutureTime:1656559853 uint256
+checkMintSolution:
+_MAXIMUM_TARGET:27606985387162255149739023449108101809804435888681546220650096895197184 uint256
+challengeNumber:0xecd7c822a46d1a837cde8d0d5b577dcbf0d6322c8b2078d17b8ab882cbd3c9a1 bytes32
+owner:0xda54fcb4728641112985a7444fe2c6f9a7f4ffca address
+symbol:0xBUTT string
+getMintDigest:
+lastRewardAmount:219700000000 uint256
+mintingEpoch:0 uint256
+getDifficultyExponent:220 uint256
+newOwner:0x0000000000000000000000000000000000000000 address
+previousSender:0x0000000000000000000000000000000000000000 address
+allowance:
+getNextAward:2744 uint256
