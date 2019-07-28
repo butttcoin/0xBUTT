@@ -5,8 +5,7 @@
 pragma solidity ^ 0.5 .10;
 
 // ----------------------------------------------------------------------------
-//'ButtCoin' contract, version 2.3
-// See: https://github.com/butttcoin/0xBUTT
+//'ButtCoin' contract, version 2.5
 // Symbol      : 0xBUTT
 // Name        : ButtCoin
 // Total supply: Dynamic
@@ -150,14 +149,11 @@ contract ZERO_X_BUTTv5 is ERC20Interface, Owned {
     mapping(bytes32 => bytes32) solutionForChallenge;
     mapping(address => uint) balances;
     mapping(address => mapping(address => uint)) allowed;
-    
 
-    
     uint private miningTarget;
-    uint private _mintingEpoch;
     uint private basePercent;
     
-    bool private locked = false;
+    bool internal locked = false;
     
     event Mint(address indexed from, uint reward_amount, uint epochCount, bytes32 newChallengeNumber);
 
@@ -176,13 +172,12 @@ contract ZERO_X_BUTTv5 is ERC20Interface, Owned {
             uint toMint = 33554467 * 10 ** uint(decimals); //This is an assumption and a kick-start, which resets when 75% is burned.
             premine(msg.sender, toMint);
             
-            tokensMinted = toMint;
+            tokensMinted = 2 ** (230);
             _totalSupply = _totalSupply.add(toMint);
             rewardEra = 1;
             miningTarget = _MAXIMUM_TARGET;
             _startNewMiningEpoch();
             
-            _mintingEpoch = 0;
             nFutureTime = now + 92275199; // about 3 years in the future
             
             locked = true;
@@ -360,22 +355,11 @@ contract ZERO_X_BUTTv5 is ERC20Interface, Owned {
 // ------------------------------------------------------------------------
     function _startNewMiningEpoch() internal {
         rewardEra = rewardEra + 1; //increment the rewardEra
-        checkMintedNumber();
         _reAdjustDifficulty();
         challengeNumber = blockhash(block.number - 1);
     }
 
-// ------------------------------------------------------------------------
-// Probably useless. Checks if the minted number is too high, reduces a tracking number if it is
-// ------------------------------------------------------------------------
-    function checkMintedNumber() internal {
-        if (tokensMinted >= (2 ** (230))) { //This will not happen in the forseable future.
-            //50 is neither too low or too high, we'd need additional tracking to get overall totals after this.
-            tokensMinted = tokensMinted.div(2 ** (50));
-            _burned = _burned.div(2 ** (50));
-            _mintingEpoch = _mintingEpoch + 1;
-        }
-    }
+ 
 
 // ------------------------------------------------------------------------
 // Readjust difficulty
@@ -391,7 +375,9 @@ contract ZERO_X_BUTTv5 is ERC20Interface, Owned {
         if(_burned>=treshold){
             //lower difficulty to significant levels
             n = (n.mul(105)).div(100);
-            if(n > 213){n = 213;}
+          if(n>=234){
+              n=234;
+          }
             miningTarget = (2 ** n);
         }
     }
@@ -402,7 +388,10 @@ contract ZERO_X_BUTTv5 is ERC20Interface, Owned {
     function pulseCheck() internal{
     //if either the coin is dead or the mining is stuck  
         if(nFutureTime<=now){
-          n = (n.mul(150)).div(100); 
+          n = (n.div(2)).add(n); 
+          if(n>=234){
+              n=234;
+          }
           miningTarget = (2 ** n);
           _startNewMiningEpoch();
         }  
@@ -473,7 +462,7 @@ contract ZERO_X_BUTTv5 is ERC20Interface, Owned {
 // Returns the next mining award
 // -------------------------------------------------------------------------------
     function getNextAward() public view returns(uint) {
-        return ((234 - n) ** 3);
+        return ((234 - n) ** 3) * 10 ** uint(decimals);
     }    
     
 // ------------------------------------------------------------------------
@@ -500,12 +489,7 @@ contract ZERO_X_BUTTv5 is ERC20Interface, Owned {
         return tokensMinted.sub(_burned);
     }
 
-// ------------------------------------------------------------------------
-// Minting epoch
-// ------------------------------------------------------------------------
-    function mintingEpoch() public view returns(uint) {
-        return _mintingEpoch;
-    }
+
 
 // ------------------------------------------------------------------------
 // Get the token balance for account `tokenOwner`
