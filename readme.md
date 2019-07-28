@@ -119,6 +119,10 @@ EXCHANGES ADDRESS:
 COMMUNITY ADDRESS: 
 0x60AF68D5FE8a50310ADC90d5510597229cB1167b
 
+## Metrics
+
+Some of the mining metrics such as mining difficulty as well as the hash-rate can be off. This is simply because the model is not following the BTC standards, while being usable by the 0xBitcoin's miners. Additional front-end tweeking is therefore necessary to make the metrics apper proper.
+
 ## Previous version of a contract, BUGFIXES on main-net
 
 Due to a nature of Ethereum, it is impossible to make any changes without issuing another contract. Although usual within the IT industry that such things are corrected after a launch (for example, it happened to EOS, security issue was detected after the launch), it means that the contract must be perfect and that there are not corrections. Hopefully, this will be solved in the future. For now, this is what it is...
