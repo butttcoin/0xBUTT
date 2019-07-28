@@ -46,8 +46,6 @@ basePercent : This helps us calculate the percentage for burning or sending to a
 
 ```miningTarget``` : This is the mining difficulty which starts at 2^234. Greater the number, easier the mining. Each reward, the number decreases as 2^233, 2^232, 2^231,...2^(n-1). BTC and Ethereum don’t follow this pattern.  Since miners keep BTC alive, BTC is constantly adjusting a difficulty to be accessible to miners. ButtCoin does not need to do that, and therefore, it encourages the smart mining instead.
 
-```_mintingEpoch``` : As mentioned under “tokensMinted”, for now, we can safely assume that this will never happen. 
-
 ```locked``` : This is used to confirm whether we have initiated a constructor, if yes, we cannot initiate it ever again.
 
 ### Other Global Variables
