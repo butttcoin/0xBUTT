@@ -6,7 +6,7 @@
 4. Mining should affect the public/global variables such as nFutureTime with an increase
 
 A new contract has been deployed and verified:
-0x59a14C13011f3346B7Dc1103CF61a4f46AfD8E0F
+0x2B11552d11B7C2A2840ED20daC6bBf1aB267cAFA
 
 -Mining works
 Initial variables
