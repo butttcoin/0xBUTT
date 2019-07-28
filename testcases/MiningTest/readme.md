@@ -4,6 +4,7 @@
 2. Mining should increment the rewards
 3. Mining should increment a difficulty (is quite noticable)
 4. Mining should affect the public/global variables such as nFutureTime with an increase
+5. Try to mine more than 22 increments (may take a day!)
 
 A new contract has been deployed and verified:
 0x2B11552d11B7C2A2840ED20daC6bBf1aB267cAFA
