@@ -7,9 +7,7 @@ The purpose of making this ERC20 token/coin is to create a cryptocurrency that i
 
 
 ### About the format
-If code were the law, than a proper white-paper would represent a code-documentation. The code can be found deployed under Ethereum’s contract: 
-
-
+If code were the law, than a proper white-paper would represent a code-documentation. The code can be found deployed under Ethereum’s contract: [0x7C1056ac0F7D223C4297e0c683453EE625011B1f](https://etherscan.io/address/0x7C1056ac0F7D223C4297e0c683453EE625011B1f)
 
 
 This white-paper will skip all the non-technical details, necessary repetitions and the common knowledge regarding the ERC20 tokens running on Ethereum. Furthermore, the main purpose of this white-paper is to translate the source-code to a plain and understandable English. The main parts of the source-code are ApproveAndFallCallback, Erc20Interface, ExtendedMath, Owned, SafeMath, and ZERO_X_BUTTv5. Everything else other than ZERO_X_BUTTv5 are the standards for coding an Ethereum token, and therefore, those will not be covered with the white-paper.
