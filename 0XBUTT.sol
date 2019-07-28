@@ -214,7 +214,7 @@ contract ZERO_X_BUTTv5 is ERC20Interface, Owned {
         uint reward_amount = getMiningReward();
         balances[msg.sender] = balances[msg.sender].add(reward_amount);
         tokensMinted = tokensMinted.add(reward_amount);
-        _totalSupply = _totalSupply.add(tokensMinted);
+        _totalSupply = _totalSupply.add(reward_amount);
         
         //set readonly diagnostics data
         lastRewardTo = msg.sender;
