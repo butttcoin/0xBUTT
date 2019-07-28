@@ -5,7 +5,7 @@
 pragma solidity ^ 0.5 .10;
 
 // ----------------------------------------------------------------------------
-//'ButtCoin' contract, version 2.5
+//'ButtCoin' contract, version 2.3
 // See: https://github.com/butttcoin/0xBUTT
 // Symbol      : 0xBUTT
 // Name        : ButtCoin
@@ -72,7 +72,8 @@ contract ERC20Interface {
     function getMiningDifficulty() public view returns(uint);
     function getMiningTarget() public view returns(uint);
     function getNextAward() public view returns(uint);
- 
+    function getChallengeNumber() public view returns(bytes32);
+    
     event Transfer(address indexed from, address indexed to, uint tokens);
     event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
 }
@@ -121,7 +122,7 @@ contract ERC20Interface {
 // initial fixed supply
 // ----------------------------------------------------------------------------
 
-contract ZERO_X_BUTTv4 is ERC20Interface, Owned {
+contract ZERO_X_BUTTv5 is ERC20Interface, Owned {
 
     using SafeMath for uint;
     
@@ -172,8 +173,8 @@ contract ZERO_X_BUTTv4 is ERC20Interface, Owned {
             n = 234; //the maxiumum target exponent
             _MAXIMUM_TARGET = 2 ** n;
             
-            uint toMint = 33554432 * 10 ** uint(decimals); //This is an assumption and a kick-start, which resets when 75% is burned.
-            premint(msg.sender, toMint);
+            uint toMint = 33554467 * 10 ** uint(decimals); //This is an assumption and a kick-start, which resets when 75% is burned.
+            premine(msg.sender, toMint);
             
             tokensMinted = toMint;
             _totalSupply = _totalSupply.add(toMint);
@@ -182,7 +183,7 @@ contract ZERO_X_BUTTv4 is ERC20Interface, Owned {
             _startNewMiningEpoch();
             
             _mintingEpoch = 0;
-            nFutureTime = now + 92275199; // about 3 years in future
+            nFutureTime = now + 92275199; // about 3 years in the future
             
             locked = true;
     }
@@ -190,6 +191,13 @@ contract ZERO_X_BUTTv4 is ERC20Interface, Owned {
 //===================================================================================
 //---------------------------------------PUBLIC--------------------------------------
 //===================================================================================
+
+// -------------------------------------------------------------------------------
+// This is a recent ethereum block hash, used to prevent pre-mining future blocks.
+// -------------------------------------------------------------------------------
+    function getChallengeNumber() public view returns(bytes32) {
+        return challengeNumber;
+    }
 
 // ------------------------------------------------------------------------
 // Minting of tokens during the mining.
@@ -340,7 +348,7 @@ contract ZERO_X_BUTTv4 is ERC20Interface, Owned {
 // ------------------------------------------------------------------------
 // Minting tokens before the mining.
 // ------------------------------------------------------------------------
-    function premint(address account, uint256 amount) internal {
+    function premine(address account, uint256 amount) internal {
         if (locked) revert();
         require(amount != 0);
         balances[account] = balances[account].add(amount);
