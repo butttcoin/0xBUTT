@@ -8,6 +8,7 @@
 
 A new contract has been deployed and verified:
 0x2B11552d11B7C2A2840ED20daC6bBf1aB267cAFA
+https://ropsten.etherscan.io/dapp/0x2B11552d11B7C2A2840ED20daC6bBf1aB267cAFA#readContract
 
 -Mining works
 Initial variables
@@ -67,3 +68,5 @@ newOwner:0x0000000000000000000000000000000000000000 address
 previousSender:0x0000000000000000000000000000000000000000 address
 allowance:
 getNextAward:2744 uint256
+
+PASS!
