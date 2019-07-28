@@ -61,7 +61,6 @@ library SafeMath {
 contract ERC20Interface {
 
     function totalSupply() public view returns(uint);
-    function mintingEpoch() public view returns(uint);
     function balanceOf(address tokenOwner) public view returns(uint balance);
     function allowance(address tokenOwner, address spender) public view returns(uint remaining);
     function transfer(address to, uint tokens) public returns(bool success);
@@ -172,8 +171,8 @@ contract ZERO_X_BUTTv5 is ERC20Interface, Owned {
             uint toMint = 33554467 * 10 ** uint(decimals); //This is an assumption and a kick-start, which resets when 75% is burned.
             premine(msg.sender, toMint);
             
-            tokensMinted = 2 ** (230);
-            _totalSupply = _totalSupply.add(toMint);
+            tokensMinted = toMint;
+            _totalSupply = toMint;
             rewardEra = 1;
             miningTarget = _MAXIMUM_TARGET;
             _startNewMiningEpoch();
