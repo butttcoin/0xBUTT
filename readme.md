@@ -19,7 +19,7 @@ The 0xBitcoin contract is located at Ethereum address [0xb6ed7644c69416d67b522e2
 
 
 ### Functions, a general overview
-
+ 
 The functions that exactly match the 0xBitCoin’s original code (regardless the Solidity version) are the one-line getter functions while the main algorithm has been entirely crafted into a new coin. Therefore, only the important changes will be discussed. Self-explanatory getters will most likely not be mentioned.
 
 ### Main Constructor
