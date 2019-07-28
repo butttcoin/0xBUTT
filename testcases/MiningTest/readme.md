@@ -1,4 +1,4 @@
-## The purpose of this test-file is to test the mining 
+## The purpose of this test-case is to test the mining 
 
 1. Mining should work
 2. Mining should increment the rewards
