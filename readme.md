@@ -83,7 +83,7 @@ Unlike “_mint” this is a function that mints tokens as a reward and gives th
 ``` js
 function _startNewMiningEpoch() internal {...
 ```
-With this function, we are increasing the rewardEra by 1. Then, we check whether the overall minted number of coins is more or equal to 1.725436587×10⁶¹ and whether we need a new minting epoch or not (most-likely, we never will). In the next step, we adjust the mining difficulty and change the challenge number. This function is mainly used as an increment to a mining difficulty as well as to calculate a new reward. Reward therefore increases with an increased mining difficulty. It is not necessary to re-apply the same logic to a number of burned coins, since we cannot burn more coins than those we have already minted.
+With this function, we are increasing the rewardEra by 1. In the next step, we adjust the mining difficulty and change the challenge number. This function is mainly used as an increment to a mining difficulty as well as to calculate a new reward. Reward therefore increases with an increased mining difficulty. It is not necessary to re-apply the same logic to a number of burned coins, since we cannot burn more coins than those we have already minted.
 
 ### Re-Adjust Difficulty
 ``` js
