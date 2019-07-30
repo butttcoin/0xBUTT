@@ -117,6 +117,9 @@ EXCHANGES ADDRESS:
 COMMUNITY ADDRESS: 
 0x60AF68D5FE8a50310ADC90d5510597229cB1167b
 
+DEPLOYMENT ADDRESS:
+0x615E3b6A61e8A5C9f3332752eF82517224857b32
+
 ## Metrics
 
 Some of the mining metrics such as mining difficulty as well as the hash-rate can be off. This is simply because the model is not following the BTC standards, while being usable by the 0xBitcoin's miners. Additional front-end tweeking is therefore necessary to make the metrics apper proper.
