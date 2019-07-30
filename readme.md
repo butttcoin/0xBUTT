@@ -120,6 +120,9 @@ COMMUNITY ADDRESS:
 DEPLOYMENT ADDRESS:
 0x615E3b6A61e8A5C9f3332752eF82517224857b32
 
+Note: due to burning, tokens may not be initially transferred and divided to DEV, COMMUNITY and DEPLOYMENT addresses. Nevertheless, tokens will be divided if it becomes too complicated or when the right time comes to start burning the tokens.
+
+
 ## Metrics
 
 Some of the mining metrics such as mining difficulty as well as the hash-rate can be off. This is simply because the model is not following the BTC standards, while being usable by the 0xBitcoin's miners. Additional front-end tweeking is therefore necessary to make the metrics apper proper.
