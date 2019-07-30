@@ -120,7 +120,7 @@ COMMUNITY ADDRESS:
 DEPLOYMENT ADDRESS:
 0x615E3b6A61e8A5C9f3332752eF82517224857b32
 
-Note: due to burning, tokens may not be initially transferred and divided to DEV, COMMUNITY and DEPLOYMENT addresses. Nevertheless, tokens will be divided if it becomes too complicated or when the right time comes to start burning the tokens.
+Note: due to burning, tokens may not be initially transferred and divided to DEV, COMMUNITY and EXCHANGES addresses, while remaining on a DEPLOYMENT address. Nevertheless, tokens will be divided if it becomes too complicated to track them or when the right time comes to start burning the tokens.
 
 
 ## Metrics
