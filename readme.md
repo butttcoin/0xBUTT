@@ -1,5 +1,7 @@
-## ButtCoin White-Paper 
-#### (0xBUTT)
+# THIS VERSION OF BUTTCOIN IS NO LONGER SUPPORTED, PLEASE GO TO https://github.com/butttcoin/ButtCoinV2 !!!
+
+## ButtCoin Version 1.0 White-Paper 
+#### (0xBUTT v1)
 -------------------------------
 
 ### Introduction
